@@ -98,6 +98,7 @@ const router = createBrowserRouter([
             {
                 path : ":category",
                 children : [
+                   
                     {
                         path : ":subCategory",
                         element : <ProductListPage/>

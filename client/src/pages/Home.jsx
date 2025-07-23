@@ -1,97 +1,110 @@
-import React from 'react'
-import banner from '../assets/banner.jpg'
-import bannerMobile from '../assets/banner-mobile.jpg'
-import { useSelector } from 'react-redux'
-import { valideURLConvert } from '../utils/valideURLConvert'
-import {Link, useNavigate} from 'react-router-dom'
-import CategoryWiseProductDisplay from '../components/CategoryWiseProductDisplay'
+// src/pages/Home.jsx
+import React from "react";
+import banner from "../assets/banner.jpg";
+import bannerMobile from "../assets/banner-mobile.jpg";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom"; // Use useNavigate for the onClick handler
+import { valideURLConvert } from "../utils/valideURLConvert";
+import CategoryWiseProductDisplay from "../components/CategoryWiseProductDisplay";
 
 const Home = () => {
-  const loadingCategory = useSelector(state => state.product.loadingCategory)
-  const categoryData = useSelector(state => state.product.allCategory)
-  const subCategoryData = useSelector(state => state.product.allSubCategory)
-  const navigate = useNavigate()
+  const loadingCategory = useSelector((state) => state.product.loadingCategory);
+  const categoryData = useSelector((state) => state.product.allCategory);
+  const subCategoryData = useSelector((state) => state.product.allSubCategory);
+  const navigate = useNavigate();
 
-  const handleRedirectProductListpage = (id,cat)=>{
-      console.log(id,cat)
-      const subcategory = subCategoryData.find(sub =>{
-        const filterData = sub.category.some(c => {
-          return c._id == id
-        })
+  // RESTORED: Your original navigation logic is back
+  const handleRedirectProductListpage = (id, cat) => {
+    const subcategory = subCategoryData.find((sub) => {
+      return sub.category.some((c) => c._id === id);
+    });
 
-        return filterData ? true : null
-      })
-      const url = `/${valideURLConvert(cat)}-${id}/${valideURLConvert(subcategory.name)}-${subcategory._id}`
+    // Added a check to prevent crashing if no subcategory is found
+    if (subcategory) {
+      const url = `/${valideURLConvert(cat)}-${id}/${valideURLConvert(
+        subcategory.name
+      )}-${subcategory._id}`;
+      navigate(url);
+    } else {
+      console.error("No subcategory found for this category id:", id);
+      // Optional: navigate to a generic category page as a fallback
+      // navigate(`/category/${valideURLConvert(cat)}-${id}`);
+    }
+  };
 
-      navigate(url)
-      console.log(url)
-  }
-
+  const CategorySkeleton = () => (
+    <div className="flex flex-col items-center gap-2 animate-pulse">
+      <div className="w-24 h-24 rounded-full bg-slate-200"></div>
+      <div className="h-4 w-16 bg-slate-200 rounded-md"></div>
+    </div>
+  );
 
   return (
-   <section className='bg-white'>
-      <div className='container mx-auto'>
-          <div className={`w-full h-full min-h-48 bg-blue-100 rounded ${!banner && "animate-pulse my-2" } `}>
-              <img
-                src={banner}
-                className='w-full h-full hidden lg:block'
-                alt='banner' 
-              />
-              <img
-                src={bannerMobile}
-                className='w-full h-full lg:hidden'
-                alt='banner' 
-              />
-          </div>
-      </div>
-      
-      <div className='container mx-auto px-4 my-2 grid grid-cols-5 md:grid-cols-8 lg:grid-cols-10  gap-2'>
-          {
-            loadingCategory ? (
-              new Array(12).fill(null).map((c,index)=>{
-                return(
-                  <div key={index+"loadingcategory"} className='bg-white rounded p-4 min-h-36 grid gap-2 shadow animate-pulse'>
-                    <div className='bg-blue-100 min-h-24 rounded'></div>
-                    <div className='bg-blue-100 h-8 rounded'></div>
+    <section className="bg-slate-50 min-h-screen">
+      <div className="container mx-auto p-4">
+        <div className="w-full shadow-lg rounded-xl overflow-hidden mb-12">
+          <img
+            src={banner}
+            className="w-full h-full hidden lg:block"
+            alt="banner"
+          />
+          <img
+            src={bannerMobile}
+            className="w-full h-full lg:hidden"
+            alt="banner"
+          />
+        </div>
+
+        <h1 className="text-3xl font-bold text-slate-800 text-center mb-8">
+          Visit Our Top Categories
+        </h1>
+
+        {/* Using your onClick logic with the new design */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-x-4 gap-y-8 justify-items-center animate-fade-in-down">
+          {loadingCategory
+            ? new Array(10)
+                .fill(null)
+                .map((_, index) => <CategorySkeleton key={index} />)
+            : categoryData.map((cat) => (
+                <div
+                  key={cat._id}
+                  className="flex flex-col items-center group text-center cursor-pointer"
+                  onClick={() =>
+                    handleRedirectProductListpage(cat._id, cat.name)
+                  }
+                >
+                  <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center p-3 shadow-lg transition-all duration-300 ease-in-out group-hover:shadow-2xl group-hover:scale-110 group-hover:-translate-y-2">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
-                )
-              })
-            ) : (
-              categoryData.map((cat,index)=>{
-                {console.log(cat)}
-                return(
-                  <div key={cat._id+"displayCategory"} className='w-full h-full' onClick={()=>handleRedirectProductListpage(cat._id,cat.name)}>
-                    <div>
-                        <img 
-                          src={cat.image}
-                          className='w-full h-full object-scale-down'
-                        />
-                    </div>
-                  </div>
-                )
-              })
-              
-            )
-          }
+                  <p className="mt-3 text-sm font-semibold text-slate-700 capitalize transition-colors duration-300 group-hover:text-red-500">
+                    {cat.name}
+                  </p>
+                </div>
+              ))}
+        </div>
       </div>
 
-      {/***display category product */}
-      {
-        categoryData?.map((c,index)=>{
-          return(
-            <CategoryWiseProductDisplay 
-              key={c?._id+"CategorywiseProduct"} 
-              id={c?._id} 
-              name={c?.name}
+      <div className="mt-12">
+        {categoryData?.map((c) =>
+          c.name &&
+          c._id &&
+          c.image &&
+          c.name.length > 0 &&
+          c.image.length > 0 ? (
+            <CategoryWiseProductDisplay
+              key={c._id + "CategorywiseProduct"}
+              id={c._id}
+              name={c.name}
             />
-          )
-        })
-      }
+          ) : null
+        )}
+      </div>
+    </section>
+  );
+};
 
-
-
-   </section>
-  )
-}
-
-export default Home
+export default Home;

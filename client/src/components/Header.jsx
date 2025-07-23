@@ -8,7 +8,7 @@ import { BsCart4 } from "react-icons/bs";
 import { useSelector } from 'react-redux';
 import { GoTriangleDown, GoTriangleUp  } from "react-icons/go";
 import UserMenu from './UserMenu';
-import { DisplayPriceInRupees } from '../utils/DisplayPriceInRupees';
+import { DisplayPrice } from '../utils/DisplayPrice';
 import { useGlobalContext } from '../provider/GlobalProvider';
 import DisplayCartItem from './DisplayCartItem';
 
@@ -135,7 +135,7 @@ const Header = () => {
                                                     cartItem[0] ? (
                                                         <div>
                                                             <p>{totalQty} Items</p>
-                                                            <p>{DisplayPriceInRupees(totalPrice)}</p>
+                                                            <p>{DisplayPrice(totalPrice)}</p>
                                                         </div>
                                                     ) : (
                                                         <p>My Cart</p>

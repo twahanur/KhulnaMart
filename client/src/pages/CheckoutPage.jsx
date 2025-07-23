@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useGlobalContext } from '../provider/GlobalProvider'
-import { DisplayPriceInRupees } from '../utils/DisplayPriceInRupees'
+import { DisplayPrice } from '../utils/DisplayPrice'
 import AddAddress from '../components/AddAddress'
 import { useSelector } from 'react-redux'
 import AxiosToastError from '../utils/AxiosToastError'
@@ -55,8 +55,10 @@ const CheckoutPage = () => {
   const handleOnlinePayment = async()=>{
     try {
         toast.loading("Loading...")
+
         const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY
         const stripePromise = await loadStripe(stripePublicKey)
+        console.log("stripePublicKey", stripePromise)
        
         const response = await Axios({
             ...SummaryApi.payment_url,
@@ -125,7 +127,7 @@ const CheckoutPage = () => {
             <h3 className='font-semibold'>Bill details</h3>
             <div className='flex gap-4 justify-between ml-1'>
               <p>Items total</p>
-              <p className='flex items-center gap-2'><span className='line-through text-neutral-400'>{DisplayPriceInRupees(notDiscountTotalPrice)}</span><span>{DisplayPriceInRupees(totalPrice)}</span></p>
+              <p className='flex items-center gap-2'><span className='line-through text-neutral-400'>{DisplayPrice(notDiscountTotalPrice)}</span><span>{DisplayPrice(totalPrice)}</span></p>
             </div>
             <div className='flex gap-4 justify-between ml-1'>
               <p>Quntity total</p>
@@ -137,7 +139,7 @@ const CheckoutPage = () => {
             </div>
             <div className='font-semibold flex items-center justify-between gap-4'>
               <p >Grand total</p>
-              <p>{DisplayPriceInRupees(totalPrice)}</p>
+              <p>{DisplayPrice(totalPrice)}</p>
             </div>
           </div>
           <div className='w-full flex flex-col gap-4'>
