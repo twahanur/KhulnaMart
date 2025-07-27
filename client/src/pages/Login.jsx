@@ -71,7 +71,16 @@ const Login = () => {
     return (
         <section className='w-full container mx-auto px-2'>
             <div className='bg-white my-4 w-full max-w-lg mx-auto rounded p-7'>
-
+                <h1 className='text-2xl font-semibold text-center'>Login</h1>
+                <p className='text-center text-red-500'>Use this email and pass for admin login</p>
+                <p className='text-center text-gray-500'>Email : <span className='font-semibold'>
+                    twahanur@gmail.com
+                </span>
+                </p>
+                <p className='text-center text-gray-500'>Password : <span className='font-semibold'>
+                    Twahanur@1
+                </span>
+                </p>
                 <form className='grid gap-4 py-4' onSubmit={handleSubmit}>
                     <div className='grid gap-1'>
                         <label htmlFor='email'>Email :</label>

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"; // Use useNavigate for the onClick handler
 import { valideURLConvert } from "../utils/valideURLConvert";
 import CategoryWiseProductDisplay from "../components/CategoryWiseProductDisplay";
+import Banner from "../components/Banner";
 
 const Home = () => {
   const loadingCategory = useSelector((state) => state.product.loadingCategory);
@@ -41,6 +42,7 @@ const Home = () => {
 
   return (
     <section className="bg-slate-50 min-h-screen">
+      <Banner />
       <div className="container mx-auto p-4">
         <div className="w-full shadow-lg rounded-xl overflow-hidden mb-12">
           <img
