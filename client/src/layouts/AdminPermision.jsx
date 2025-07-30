@@ -3,8 +3,6 @@ import isAdmin from '../utils/isAdmin'
 
 const AdminPermision = ({children}) => {
     const user = useSelector(state => state.user)
-
-
   return (
     <>
         {

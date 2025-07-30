@@ -29,9 +29,7 @@ const Login = () => {
             }
         })
     }
-
     const valideValue = Object.values(data).every(el => el)
-
 
     const handleSubmit = async(e)=>{
         e.preventDefault()
@@ -41,11 +39,9 @@ const Login = () => {
                 ...SummaryApi.login,
                 data : data
             })
-            
             if(response.data.error){
                 toast.error(response.data.message)
             }
-
             if(response.data.success){
                 toast.success(response.data.message)
                 localStorage.setItem('accesstoken',response.data.data.accesstoken)
