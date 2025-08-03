@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const OfferCard = ({ data }) => {
-  const { imageUrl, title, subtitle } = data;
-
+const OfferCard = ( {data} ) => {
+  const { imageUrl, title, subtitle,link } = data
+console.log(link)
   return (
     <div className="relative w-full h-[200px] rounded-xl overflow-hidden shadow-md group">
-      <Link to="#" className="block w-full h-full">
+      <Link to={link} className="block w-full h-full">
         {/* Background Image */}
         <div
           className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
