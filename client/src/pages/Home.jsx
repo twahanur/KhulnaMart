@@ -11,7 +11,9 @@ import Banner from "../components/Banner";
 const Home = () => {
   const loadingCategory = useSelector((state) => state.product.loadingCategory);
   const categoryData = useSelector((state) => state.product.allCategory);
+  console.log(categoryData)
   const subCategoryData = useSelector((state) => state.product.allSubCategory);
+  console.log(subCategoryData)
   const navigate = useNavigate();
 
   // RESTORED: Your original navigation logic is back

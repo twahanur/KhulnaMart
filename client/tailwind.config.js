@@ -10,19 +10,18 @@ export default {
         "secondary-100": "#0b1a78",
       },
       keyframes: {
-        "fade-in-down": {
-          "0%": {
-            opacity: "0",
-            transform: "translateY(-20px)",
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translateY(0)",
-          },
+        slideDown: {
+          "0%": { transform: "translateY(-10%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
       animation: {
-        "fade-in-down": "fade-in-down 0.8s ease-out forwards",
+        "slide-down": "slideDown 0.3s ease-out",
+        "fade-in": "fadeIn 0.3s ease-in",
       },
     },
   },

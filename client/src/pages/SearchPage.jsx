@@ -42,7 +42,7 @@ const SearchPage = () => {
               })
             }
             setTotalPage(responseData.totalPage)
-            console.log(responseData)
+           
         }
     } catch (error) {
         AxiosToastError(error)
