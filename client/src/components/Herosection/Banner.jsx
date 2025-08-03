@@ -102,7 +102,7 @@ const Banner = () => {
   }
 
   return (
-    <section className="container mx-auto p-4 md:p-6 lg:p-8">
+    <section className="container mx-auto p-4 md:pr-0">
       <div className="relative h-80 md:h-96 w-full rounded-lg overflow-hidden group">
         <div
           className="w-full h-full flex transition-transform ease-in-out duration-700"
