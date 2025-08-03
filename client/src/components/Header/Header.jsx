@@ -145,24 +145,24 @@ const Header = () => {
           <FiChevronDown />
           {isMegaMenuOpen && (
             <div
-              className="absolute top-full left-0 bg-white text-black flex shadow-lg z-50 animate-fade-in"
+              className="absolute top-full left-0 bg-green-500 text-black flex shadow-lg z-50 animate-fade-in"
               onMouseEnter={() => setIsMegaMenuOpen(true)}
               onMouseLeave={() => setIsMegaMenuOpen(false)}
             >
-              <div className="w-48 border-r bg-gray-50">
+              <div className="w-48 border-r bg-green-500">
                 {categoryData.map((cat) => (
                   <div
                     key={cat._id}
                     onMouseEnter={() => setHoveredCategoryId(cat._id)}
-                    className="p-3 hover:bg-green-100 text-sm cursor-pointer"
+                    className="p-3 hover:bg-gray-100 text-normal cursor-pointer"
                   >
                     {cat.name}
                   </div>
                 ))}
               </div>
               <div className="min-w-[300px] p-4">
-                <h3 className="font-bold text-gray-800 mb-2">Subcategories</h3>
-                <ul className="grid grid-cols-2 gap-2 text-sm text-gray-700">
+                <h3 className="font-bold text-white mb-2">Subcategories</h3>
+                <ul className="grid grid-cols-2 gap-2 text-sm text-white">
                   {subCategoryData
                     .filter((sub) =>
                       sub.category.some((c) => c._id === hoveredCategoryId)
@@ -179,7 +179,7 @@ const Header = () => {
                             sub
                           )
                         }
-                        className="hover:text-green-600 cursor-pointer"
+                        className="hover:text-black hover:bg-white px-2 py-1 rounded cursor-pointer"
                       >
                         {sub.name}
                       </li>
@@ -200,11 +200,11 @@ const Header = () => {
             <span className="font-medium">{cat.name}</span>
             {activeCategory === cat._id && (
               <div
-                className="absolute top-full left-0 bg-white text-black p-4 w-[500px] shadow-lg z-50 animate-fade-in"
+                className="absolute top-full left-0 bg-green-500 text-black p-4 w-[500px] shadow-lg z-50 animate-fade-in"
                 onMouseEnter={() => setActiveCategory(cat._id)}
                 onMouseLeave={() => setActiveCategory(null)}
               >
-                <h3 className="text-lg font-semibold mb-2 text-green-800">
+                <h3 className="text-lg font-semibold mb-2 text-white">
                   {cat.name}
                 </h3>
                 <ul className="grid grid-cols-2 gap-2 text-sm">
@@ -218,7 +218,7 @@ const Header = () => {
                         onClick={() =>
                           handleRedirectProductListpage(cat._id, cat.name, sub)
                         }
-                        className="hover:text-green-600 cursor-pointer"
+                        className="hover:text-black hover:bg-white px-2 py-1 rounded cursor-pointer"
                       >
                         {sub.name}
                       </li>

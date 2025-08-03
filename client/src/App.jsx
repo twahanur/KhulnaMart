@@ -82,8 +82,6 @@ function App() {
         <Outlet />
       </main>
       <Footer />
-      <h3>Introduction to JavaScript</h3>
-      <p>JavaScript adds interactivity to a webpage</p>
 
       <Toaster />
       {location.pathname !== "/checkout" && <CartMobileLink />}

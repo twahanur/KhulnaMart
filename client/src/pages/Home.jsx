@@ -107,7 +107,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="">
+      <div className="mb-20">
         {categoryData?.map((c) =>
           c.name &&
           c._id &&
