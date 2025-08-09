@@ -67,7 +67,7 @@ const EditSubCategory = ({close,data,fetchData}) => {
 
             const { data : responseData } = response
 
-            console.log("responseData",responseData)
+            
             if(responseData.success){
                 toast.success(responseData.message)
                 if(close){

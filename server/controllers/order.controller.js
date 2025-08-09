@@ -150,7 +150,6 @@ export async function webhookStripe(request,response){
     const event = request.body;
     const endPointSecret = process.env.STRIPE_ENPOINT_WEBHOOK_SECRET_KEY
 
-    console.log("event",event)
 
     // Handle the event
   switch (event.type) {
@@ -169,7 +168,6 @@ export async function webhookStripe(request,response){
     
       const order = await OrderModel.insertMany(orderProduct)
 
-        console.log(order)
         if(Boolean(order[0])){
             const removeCartItems = await  UserModel.findByIdAndUpdate(userId,{
                 shopping_cart : []

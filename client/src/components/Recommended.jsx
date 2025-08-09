@@ -9,7 +9,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { valideURLConvert } from "../utils/valideURLConvert";
 
-const CategoryWiseProductDisplay = ({ id, name }) => {
+const Recommended = ({ id, name }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const containerRef = useRef();
@@ -21,11 +21,8 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
       setLoading(true);
       const response = await Axios({
         ...SummaryApi.getProductByCategory,
-        data: {
-          id: id,
-        },
+        data: { id },
       });
-      console.log(response)
       const { data: responseData } = response;
 
       if (responseData.success) {
@@ -43,19 +40,20 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
   }, []);
 
   const handleScrollRight = () => {
-    containerRef.current.scrollLeft += 200;
+    if (containerRef.current) {
+      containerRef.current.scrollLeft += 200;
+    }
   };
 
   const handleScrollLeft = () => {
-    containerRef.current.scrollLeft -= 200;
+    if (containerRef.current) {
+      containerRef.current.scrollLeft -= 200;
+    }
   };
 
   const handleRedirectProductListpage = () => {
     const subcategory = subCategoryData.find((sub) => {
-      const filterData = sub.category.some((c) => {
-        return c._id == id;
-      });
-
+      const filterData = sub.category.some((c) => c._id === id);
       return filterData ? true : null;
     });
     const url = `/${valideURLConvert(name)}-${id}/${valideURLConvert(
@@ -66,6 +64,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
   };
 
   const redirectURL = handleRedirectProductListpage();
+
   return (
     <div className="border-t-2 border-dashed">
       <div className="container mx-auto p-4 flex items-center justify-between gap-4">
@@ -74,22 +73,28 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
           See All
         </Link>
       </div>
+
       <div className="relative group">
         <div
-          className="flex gap-6 md:gap-8 lg:gap-10 overflow-x-scroll scrollbar-none scroll-smooth"
+          className="flex gap-4 md:gap-6 lg:gap-8 overflow-x-scroll scrollbar-none scroll-smooth px-4"
           ref={containerRef}
         >
           {loading
-            ? Array.from({ length: 6 }).map((_, index) => (
-                <CardLoading key={"loading-" + index} />
+            ? loadingCardNumber.map((_, index) => (
+                <div
+                  key={`loading-${index}`}
+                  className="min-w-[50%] sm:min-w-[50%] md:min-w-[240px] lg:min-w-[240px]"
+                >
+                  <CardLoading />
+                </div>
               ))
             : data.length > 0
             ? data.map((product) => (
                 <div
                   key={product._id}
-                  className="min-w-[200px] sm:min-w-[220px] md:min-w-[240px] transition-transform transform hover:scale-[1.03]"
+                  className="min-w-[50%] sm:min-w-[50%] md:min-w-[240px] lg:min-w-[240px] transition-transform transform hover:scale-[1.03]"
                 >
-                  <CardProduct  data={product} />
+                  <CardProduct data={product} />
                 </div>
               ))
             : (
@@ -99,6 +104,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
             )}
         </div>
 
+        {/* Scroll buttons – show only on lg and above */}
         <div className="w-full absolute top-0 bottom-0 left-0 right-0 items-center justify-between hidden lg:flex opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
           <button
             onClick={handleScrollLeft}
@@ -108,7 +114,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
           </button>
           <button
             onClick={handleScrollRight}
-            className="z-10 bg-white/80 backdrop-blur-sm hover:bg-white text-slate-800 shadow-xl p-3 text-2xl rounded-full pointer-events-auto"
+            className="z-10 bg-white/80 backdrop-blur-sm hover:bg-white text-slate-800 shadow-xl text-2xl p-3 rounded-full pointer-events-auto"
           >
             <FaAngleRight />
           </button>
@@ -118,4 +124,4 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
   );
 };
 
-export default CategoryWiseProductDisplay;
+export default Recommended;

@@ -42,7 +42,7 @@ const Header = () => {
       <div className="md:hidden block w-full">
         <Search />
       </div>
-      <div className="container mx-auto flex items-center justify-between p-4">
+      <div className=" flex items-center justify-between p-4">
         <Link to="/">
           <img
             src={logo}
@@ -56,9 +56,11 @@ const Header = () => {
           <Search />
         </div>
 
+        
+
         <div className="flex items-center gap-4">
           {user?._id ? (
-            <Link to="/user" className="hover:underline">
+            <Link to="/user" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:underline">
               <FaRegUserCircle size={20} />
             </Link>
           ) : (
@@ -135,7 +137,7 @@ const Header = () => {
       )}
 
       {/* ✅ Desktop Mega Menu */}
-      <nav className="hidden lg:flex bg-green-800 text-white px-4">
+      <nav className="hidden  lg:flex bg-green-800 text-white px-4">
         <div
           className="relative px-4 py-3 cursor-pointer flex items-center gap-1 hover:bg-green-700"
           onMouseEnter={() => setIsMegaMenuOpen(true)}
@@ -151,13 +153,14 @@ const Header = () => {
             >
               <div className="w-48 border-r bg-green-500">
                 {categoryData.map((cat) => (
+                  cat.name !=="Recommended"?
                   <div
                     key={cat._id}
                     onMouseEnter={() => setHoveredCategoryId(cat._id)}
                     className="p-3 hover:bg-gray-100 text-normal cursor-pointer"
                   >
                     {cat.name}
-                  </div>
+                  </div>:null
                 ))}
               </div>
               <div className="min-w-[300px] p-4">
@@ -185,12 +188,14 @@ const Header = () => {
                       </li>
                     ))}
                 </ul>
+                
               </div>
             </div>
           )}
         </div>
 
         {categoryData.map((cat) => (
+           cat.name !=="Recommended"?
           <div
             key={cat._id}
             className="relative px-4 py-3 cursor-pointer hover:bg-green-700"
@@ -215,8 +220,9 @@ const Header = () => {
                     .map((sub) => (
                       <li
                         key={sub._id}
-                        onClick={() =>
-                          handleRedirectProductListpage(cat._id, cat.name, sub)
+                        onClick={() =>{
+                          window.scrollTo({ top: 0, behavior: 'smooth' })
+                          handleRedirectProductListpage(cat._id, cat.name, sub)}
                         }
                         className="hover:text-black hover:bg-white px-2 py-1 rounded cursor-pointer"
                       >
@@ -226,8 +232,14 @@ const Header = () => {
                 </ul>
               </div>
             )}
-          </div>
+          </div>:null
         ))}
+        <Link to="/search">
+        <div onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        className="font-bold relative px-4 py-3 cursor-pointer hover:bg-green-700">
+          All Products
+        </div>
+        </Link>
       </nav>
       {openCartSection && (
         <DisplayCartItem close={() => setOpenCartSection(false)} />

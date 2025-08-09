@@ -50,7 +50,6 @@ const UploadCategoryModel = ({close, fetchData}) => {
 
     const handleUploadCategoryImage = async(e)=>{
         const file = e.target.files[0]
-        console.log("first, file", file)
         if(!file){
             return
         }

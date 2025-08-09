@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const OfferCard = ( {data} ) => {
   const { imageUrl, title, subtitle,link } = data
-console.log(link)
   return (
     <div className="relative w-full h-[200px] rounded-xl overflow-hidden shadow-md group">
       <Link to={link} className="block w-full h-full">

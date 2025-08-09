@@ -279,7 +279,6 @@ export const deleteProductDetails = async (request, response) => {
 export const searchProduct = async (request, response) => {
   try {
     let { search, page, limit } = request.body;
-    console.log("search", search, page, limit);
 
     if (!page) {
       page = 1;
