@@ -1,8 +1,8 @@
-import { PageHeader } from "../../components/page-header"
-// Fixed import path to use ui/card
-import { Card, CardHeader, CardTitle, CardContent } from "../../components/ui/card"
-import { termsOfSale } from "../../fakedata/policies"
+
 import { Package, Truck, RotateCcw, Shield, Clock, Phone, Mail } from "lucide-react"
+import PageHeader from "../components/PageHeader"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
+import { termsOfSale } from "../assets/FakeData/policesData"
 
 export default function TermsOfSalePage() {
   return (

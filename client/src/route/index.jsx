@@ -23,6 +23,15 @@ import CartMobile from "../pages/CartMobile";
 import CheckoutPage from "../pages/CheckoutPage";
 import Success from "../pages/Success";
 import Cancel from "../pages/Cancel";
+import AboutPage from "../pages/About";
+import AffiliatePage from './../pages/Affiliate';
+import BlogPage from './../pages/Blog';
+import ContactPage from './../pages/Contact';
+import SizeGuidePage from './../pages/SizeGuidePage';
+import CSRPolicyPage from './../pages/CsrPolicy';
+import PrivacyPolicyPage from './../pages/PrivacyPolicy';
+import TermsOfSalePage from './../pages/TermsOfSale';
+import TermsOfUsePage from './../pages/TermsOfUse';
 
 const router = createBrowserRouter([
   {
@@ -139,6 +148,43 @@ const router = createBrowserRouter([
       {
         path: "cancel",
         element: <Cancel />,
+      },
+      {
+        path: "aboutus",
+        element: <AboutPage />,
+      },
+      {
+        path: "affiliate",
+        element: <AffiliatePage />,
+      },
+      {
+        path: "blog",
+        element: <BlogPage />,
+      },
+      {
+        path: "contactus",
+        element: <ContactPage />,
+      },
+      {
+        path: "sizes",
+        element: <SizeGuidePage />,
+      },
+      // policy
+      {
+        path: "csr-policy",
+        element: <CSRPolicyPage />,
+      },
+      {
+        path: "privacy-policy",
+        element: <PrivacyPolicyPage />,
+      },
+      {
+        path: "terms-of-sale",
+        element: <TermsOfSalePage />,
+      },
+      {
+        path: "terms-of-use",
+        element: <TermsOfUsePage />,
       },
     ],
   },

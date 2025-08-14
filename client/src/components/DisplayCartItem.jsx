@@ -1,4 +1,3 @@
-import React from 'react'
 import { IoClose } from 'react-icons/io5'
 import { Link, useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../provider/GlobalProvider'
@@ -10,17 +9,17 @@ import { pricewithDiscount } from '../utils/PriceWithDiscount'
 import imageEmpty from '../assets/empty_cart.webp'
 import toast from 'react-hot-toast'
 
-const DisplayCartItem = ({close}) => {
+const DisplayCartItem = ({cartOpen, setCartOpen}) => {
     const { notDiscountTotalPrice, totalPrice ,totalQty} = useGlobalContext()
     const cartItem  = useSelector(state => state.cartItem.cart)
     const user = useSelector(state => state.user)
     const navigate = useNavigate()
-
     const redirectToCheckoutPage = ()=>{
         if(user?._id){
             navigate("/checkout")
-            if(close){
-                close()
+            if(cartOpen){
+                console.log("first")
+                setCartOpen(false)
             }
             return
         }
@@ -31,10 +30,10 @@ const DisplayCartItem = ({close}) => {
         <div className='bg-green-900 w-full max-w-sm min-h-screen max-h-screen ml-auto'>
             <div className=' bg-green-800 flex items-center p-4 shadow-md gap-3 justify-between'>
                 <h2 className='font-semibold'>Cart</h2>
-                <Link to={"/"} className='lg:hidden'>
+                <Link to={"/"} onClick={()=>setCartOpen(false)} className='lg:hidden'>
                     <IoClose size={25}/>
                 </Link>
-                <button onClick={close} className='hidden lg:block'>
+                <button onClick={()=>setCartOpen(false)} className='hidden lg:block'>
                     <IoClose size={25}/>
                 </button>
             </div>

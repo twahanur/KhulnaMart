@@ -1,6 +1,8 @@
-import { PageHeader } from "../../components/page-header"
-import { termsOfUse } from "../../fakedata/policies"
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
+import { termsOfUse } from "../assets/FakeData/policesData"
+import PageHeader from "../components/PageHeader"
+// import { PageHeader } from "../components/page-header"
+// import { termsOfUse } from "../../fakedata/policies"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 
 export default function TermsOfUsePage() {
   return (

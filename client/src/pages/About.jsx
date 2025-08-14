@@ -1,9 +1,11 @@
-import { PageHeader } from "../../components/page-header"
-import { SocialLinks } from "../../components/social-links"
-import { companyInfo } from "../../fakedata/company-info"
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
-import { Badge } from "../../components/ui/badge"
+// import { PageHeader } from "../../components/page-header"
+// import { companyInfo } from "../../fakedata/company-info"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
+import { Badge } from "../components/ui/badge"
 import { Building, Target, Eye, Heart, Users, Award, Truck, Shield } from "lucide-react"
+import PageHeader from './../components/PageHeader';
+import { companyInfo } from './../assets/FakeData/companyInfo';
+import { SocialLinks } from './../components/SocialLinks';
 
 export default function AboutPage() {
   const stats = [

@@ -1,9 +1,13 @@
-import { PageHeader } from "../../components/page-header"
-import { ContactForm } from "../../components/contact-form"
-import { SocialLinks } from "../../components/social-links"
-import { companyInfo } from "../../fakedata/company-info"
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
+// import { PageHeader } from "../../components/page-header"
+// import { ContactForm } from "../../components/contact-form"
+// import { SocialLinks } from "../../components/social-links"
+// import { companyInfo } from "../../fakedata/company-info"
+import PageHeader from "../components/PageHeader"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { Clock, MessageCircle } from "lucide-react"
+import { ContactForm } from './../components/ContactForm';
+import { SocialLinks } from "../components/SocialLinks";
+import { companyInfo } from "../assets/FakeData/companyInfo";
 
 export default function ContactPage() {
   return (

@@ -1,8 +1,10 @@
-import { PageHeader } from "../../components/page-header"
-import { PolicySection } from "../../components/policy-section"
-import { csrPolicy } from "../../fakedata/policies"
-import { Card, CardContent } from "../../components/ui/card"
+// import { PageHeader } from "../../components/page-header"
+// import { PolicySection } from "../../components/policy-section"
+import { csrPolicy } from "../assets/FakeData/policesData"
+import PageHeader from "../components/PageHeader"
+import { Card, CardContent } from "../components/ui/card"
 import { Leaf, Heart, Users, Award } from "lucide-react"
+import { PolicySection } from './../components/PolicySection';
 
 export default function CSRPolicyPage() {
   const highlights = [

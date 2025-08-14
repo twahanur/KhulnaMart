@@ -1,9 +1,9 @@
 import { Ruler, Shirt, ShoppingBag } from "lucide-react"
-import PageHeader from "../../components/page-header"
-import SizeChart from "../../components/size-chart"
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
-import { sizeGuides, productGuides } from "../../fakedata/guides-data"
+import PageHeader from "../components/PageHeader"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
+import { productGuides, sizeGuides } from './../assets/FakeData/guidesData';
+import SizeChart from './../components/SizeChart';
 
 export default function SizeGuidePage() {
   return (

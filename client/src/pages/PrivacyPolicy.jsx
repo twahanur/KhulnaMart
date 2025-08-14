@@ -1,7 +1,8 @@
-import { PageHeader } from "../../components/page-header"
-import { privacyPolicy } from "../../fakedata/policies"
+// import { PageHeader } from "../../components/page-header"
+import { privacyPolicy } from "../assets/FakeData/policesData"
+import PageHeader from "../components/PageHeader"
 // Fixed import path to use ui/card
-import { Card, CardHeader, CardTitle, CardContent } from "../../components/ui/card"
+import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/card"
 import { Shield, Eye, Lock, Users, FileText, Phone, Mail, MapPin } from "lucide-react"
 
 export default function PrivacyPolicyPage() {

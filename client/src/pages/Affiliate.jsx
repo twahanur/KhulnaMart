@@ -2,13 +2,18 @@
 
 import { useState } from "react"
 import { DollarSign, Users, BarChart, Gift, CheckCircle, Star } from "lucide-react"
-import PageHeader from "../../components/page-header"
-import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
-import { Button } from "../../components/ui/button"
-import { Input } from "../../components/ui/input"
-import { Textarea } from "../../components/ui/textarea"
-import { Badge } from "../../components/ui/badge"
-import { partnerProgram, testimonials } from "../../fakedata/affiliate-data"
+// import PageHeader from "../../components/page-header"
+// import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
+// import { Button } from "../../components/ui/button"
+import { Input } from "../components/ui/input"
+import { Textarea } from "../components/ui/textarea"
+// import { Badge } from "../../components/ui/badge"
+// import { partnerProgram, testimonials } from "../../fakedata/affiliate-data"
+import PageHeader from './../components/PageHeader';
+import { Button } from "../components/ui/button";
+import { partnerProgram, testimonials } from './../assets/FakeData/affiliateData';
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { Badge } from "../components/ui/badge";
 
 const iconMap = {
   DollarSign,

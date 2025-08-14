@@ -6,7 +6,8 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
-import { companyInfo } from "../fakedata/company-info"
+import { companyInfo } from "../assets/FakeData/companyInfo"
+// import { companyInfo } from "../fakedata/company-info"
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
