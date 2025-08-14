@@ -43,7 +43,7 @@ const Header = () => {
         <Search />
       </div>
       <div className=" flex items-center justify-between p-4">
-        <Link to="/">
+        <Link onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to="/">
           <img
             src={logo}
             alt="Khulna-Mart Logo"
@@ -64,7 +64,7 @@ const Header = () => {
               <FaRegUserCircle size={20} />
             </Link>
           ) : (
-            <Link to="/login" className="hover:underline">
+            <Link to="/login" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:underline">
               Login
             </Link>
           )}
@@ -137,7 +137,7 @@ const Header = () => {
       )}
 
       {/* ✅ Desktop Mega Menu */}
-      <nav className="hidden  lg:flex bg-green-800 text-white px-4">
+      <nav className="hidden  lg:flex bg-green-700 text-white px-4">
         <div
           className="relative px-4 py-3 cursor-pointer flex items-center gap-1 hover:bg-green-700"
           onMouseEnter={() => setIsMegaMenuOpen(true)}
@@ -147,18 +147,19 @@ const Header = () => {
           <FiChevronDown />
           {isMegaMenuOpen && (
             <div
-              className="absolute top-full left-0 bg-green-500 text-black flex shadow-lg z-50 animate-fade-in"
+              className="absolute top-full left-0 bg-green-700 text-black flex shadow-lg z-50 animate-fade-in"
               onMouseEnter={() => setIsMegaMenuOpen(true)}
               onMouseLeave={() => setIsMegaMenuOpen(false)}
             >
-              <div className="w-48 border-r bg-green-500">
+              <div className="w-48 border-r bg-green-700">
                 {categoryData.map((cat) => (
                   cat.name !=="Recommended"?
                   <div
                     key={cat._id}
                     onMouseEnter={() => setHoveredCategoryId(cat._id)}
-                    className="p-3 hover:bg-gray-100 text-normal cursor-pointer"
+                    className="p-3 flex hover:bg-gray-100 text-normal align-middle cursor-pointer"
                   >
+                    <img src={cat.image} alt="" className="me-5 h-5 w-5 rounded-full " />
                     {cat.name}
                   </div>:null
                 ))}
@@ -198,14 +199,14 @@ const Header = () => {
            cat.name !=="Recommended"?
           <div
             key={cat._id}
-            className="relative px-4 py-3 cursor-pointer hover:bg-green-700"
+            className="relative px-4 py-3 cursor-pointer hover:bg-green-600"
             onMouseEnter={() => setActiveCategory(cat._id)}
             onMouseLeave={() => setActiveCategory(null)}
           >
             <span className="font-medium">{cat.name}</span>
             {activeCategory === cat._id && (
               <div
-                className="absolute top-full left-0 bg-green-500 text-black p-4 w-[500px] shadow-lg z-50 animate-fade-in"
+                className="absolute top-full left-0 bg-green-700 text-black p-4 w-[500px] shadow-lg z-50 animate-fade-in"
                 onMouseEnter={() => setActiveCategory(cat._id)}
                 onMouseLeave={() => setActiveCategory(null)}
               >
